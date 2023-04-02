@@ -10,6 +10,11 @@ public abstract class BaseFactory : MonoBehaviour
     public List<ResourceData> ProductDatas { get => productData; }
 
     [SerializeReference]
+    [Header("The products this factory can produce")]
+    protected List<Resource> products;
+    public List<Resource> Products { get => products; }
+
+    [SerializeReference]
     [Header("The resources that this factory has")]
     protected List<FactoryResource> factoryResources;
     public List<FactoryResource> FactoryResources { get => factoryResources; }
@@ -92,6 +97,33 @@ public abstract class BaseFactory : MonoBehaviour
         FactoryResource factoryResource = resourceToAdd.ToFactoryResource();
         FactoryResources.Add(factoryResource);
         return factoryResource;
+    }
+
+    protected void InitializeProduct(Resource productToAdd)
+    {
+        InitializeFactoryResource(productToAdd);
+        if (!Products.Contains(productToAdd))
+            Products.Add(productToAdd);
+    }
+
+    protected Resource GetProductFromData(ResourceData productData)
+    {
+        foreach (Resource existingProduct in Products)
+        {
+            if (existingProduct.Equals(productData))
+                return existingProduct;
+        }
+        return null;
+    }
+
+    protected Resource GetProductFromName(string name)
+    {
+        foreach (Resource existingProduct in Products)
+        {
+            if (existingProduct.Name.Equals(name))
+                return existingProduct;
+        }
+        return null;
     }
 
     protected bool FactoryHasResource(Resource resourceToCheck)

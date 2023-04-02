@@ -168,7 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   productData:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: b98387ea9f3da544286dc8b3fd6343f7, type: 2}
+  products: []
   factoryResources: []
   references:
     version: 2

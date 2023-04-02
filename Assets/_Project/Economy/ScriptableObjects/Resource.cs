@@ -8,21 +8,21 @@ public class Resource
     [field:SerializeField]
     public uint Amount { get; private set; }
     [SerializeField]
-    string _name;
+    public string Name;
     private ResourceData _resourceData;
 
     #region Constructors
     public Resource(ResourceData resourceData)
     {
         _resourceData = resourceData;
-        _name = resourceData.Name;
+        Name = resourceData.Name;
         Amount = 0;
     }
 
     public Resource(ResourceData resourceData, uint initialAmount)
     {
         _resourceData = resourceData;
-        _name = resourceData.Name;
+        Name = resourceData.Name;
         Amount = initialAmount;
     }
     #endregion
